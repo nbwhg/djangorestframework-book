@@ -1,0 +1,40 @@
+{
+    "title": "GitBook学习笔记",
+    "author": "nick",
+    "description": "Django REST framework 3 中文文档",
+    "links": {
+        "sidebar": {
+            "Author's Blog": "http://ibash.cc"
+        }
+    },
+    "plugins": ["-sharing", "sharing-plus", "search-pro"],
+    "pluginsConfig": {
+        "theme-default": {
+            "showLevel": true
+        },
+        "sharing": {
+            "douban": false,
+            "facebook": false,
+            "google": false,
+            "hatenaBookmark": false,
+            "instapaper": false,
+            "line": false,
+            "linkedin": false,
+            "messenger": false,
+            "pocket": false,
+            "qq": true,
+            "qzone": true,
+            "stumbleupon": false,
+            "twitter": false,
+            "viber": false,
+            "vk": false,
+            "weibo": true,
+            "whatsapp": false,
+            "all": [
+                "facebook", "google", "twitter",
+                "weibo", "qq", "linkedin",
+                "qzone", "douban"
+            ]
+        }
+    }
+}
