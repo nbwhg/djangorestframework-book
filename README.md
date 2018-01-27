@@ -6,7 +6,7 @@
 
 ---
 
-![](../images/logo.png)
+![](./images/logo.png)
 
 
 Django REST framework 是一个功能强大的灵活的构建Web APIs的工具包。
