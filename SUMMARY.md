@@ -29,19 +29,19 @@
 * [通用视图Generic views](api/gviews.md)
 * [视图组Viewsets](api/viewsets.md)
 * [路由Routers](api/routers.md)
-* [解析Parsers](api/parsers.md)
-* [渲染Renderers](api/renderers.md)
+* [解析器Parsers](api/parsers.md)
+* [渲染器Renderers](api/renderers.md)
 * [序列化](api/serializers.md)
 * [Serializer fields](api/serializersfield.md)
 * [Serializer relations](api/serializersrelat.md)
 * [校验器Validators](api/validators.md)
 * [身份验证](api/authentication.md)
 * [权限](api/permissions.md)
-* [Throttling](api/throttling.md)
+* [限流Throttling](api/throttling.md)
 * [过滤](api/filtering.md)
 * [分页](api/pagination.md)
 * [API 版本化](api/versioning.md)
-* [Content negotiation](api/cnegotiation.md)
+* [内容协商Content negotiation](api/cnegotiation.md)
 * [元数据](api/metadata.md)
 * [Schemas](api/schemas.md)
 * [Format suffixes](api/formatsuffixes.md)
@@ -53,3 +53,4 @@
 
 ## 最佳实践
 * [API文档生成](topics/docs.md)
+
