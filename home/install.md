@@ -15,9 +15,9 @@ REST framework 有以下依赖:
 
 使用```pip```可以安装REST framework和其他任何的可选安装包：
 ```shell
-pip install django==1.11.8
+pip install django==1.11.10
 
-pip install djangorestframework==3.7.3
+pip install djangorestframework==3.7.7
 
 pip install markdown  # 为可视化API 提供支持
 
