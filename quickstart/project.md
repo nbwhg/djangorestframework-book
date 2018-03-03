@@ -14,8 +14,8 @@ cd tutorial
 mkvirtualenv --no-site-packages -p /usr/local/bin/python3 env
 
 # 在虚拟环境中安装Django和 Django REST framework
-pip install django==1.11.8
-pip install djangorestframework==3.7.3
+pip install django==1.11.10
+pip install djangorestframework==3.7.7
 
 # 创建一个新的项目并启动一个APP
 django-admin.py startproject tutorial .  # 注意最后的 . 字符
