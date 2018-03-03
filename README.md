@@ -35,7 +35,7 @@ Django REST framework 是一个功能强大的灵活的构建Web APIs的工具�
 
 #### 项目源码
 
-项目源码存放于Github上，https://github.com/bigtree6688/djangorestframework-book。
+项目源码存放于Github上，[https://github.com/bigtree6688/djangorestframework-book](https://github.com/bigtree6688/djangorestframework-book)。
 
 ---
 
