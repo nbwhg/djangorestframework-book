@@ -97,11 +97,37 @@ REST framework 会使用下面的方法 去实例化 各种可插拔的 API 策�
 
 ##### ```.initial(self, request, *args, **kwargs)```
 
+不管执行任何动作的处理函数之前，这个方法都会被首先调用。这个方法用来执行权限和限流功能，并且勇于处理内容协商。
+
+你通常不需要修改这个方法。
+
 ##### ```.handle_exception(self, exc)```
+
+执行处理函数中抛出的任何异常都会被传递到这个方法中，该方法将会返回一个```Response```实例，或者重新```raise```一个异常。
+
+默认处理异常的行为可以是任何```rest_framework.exceptions.APIException```的子类，和Django的```Http404```和```PermissionDenied```异常一样， 都会返回一个合理恰当的错误响应。
+
+如果你需要在你的API中自定义错误响应，你应该在你继承的子类中重写该方法。
 
 ##### ```.initialize_request(self, request, *args, **kwargs)```
 
+初始化请求。
+
+确保传递给处理方法的请求对象是```Request```的实例，而不是常规的Django的```HttpRequest```。
+
+该方法实际上就是返回一个```Request```的实例。
+
+你通常不需要修改这个方法。
+
 ##### ```.finalize_response(self, request, response, *args, **kwargs)```
+
+返回最终的响应对象。
+
+该方法会在最后调用，确保处理函数返回的任何```Response```对象会被正确的渲染。
+
+该方法会通过内容协商(```self.perform_content_negotiation(request, force=True)```)，确定```response.accepted_renderer```和```response.accepted_media_type```。
+
+你通常也不需要修改这个方法。
 
 ---
 
@@ -114,9 +140,90 @@ REST framework对于基于函数的视图同样也能非常好的工作。REST f
 
 #### ```@api_view()```
 
+**语法：** ```@api_view(http_method_names=['GET'])```
+
+核心功能就是```@api_view```装饰器，并且要把你视图应该接收处理的HTTP方法以列表的形式，写到装饰器的参数中。
+
+比如，下面的例子是如何编写一个非常简单的视图，并且仅仅是手动返回一些数据：
+
+```python
+from rest_framework.decorators import api_view
+
+@api_view()
+def hello_world(request):
+    return Response({"message": "Hello, world!"})
+```
+
+这个视图将使用[```settings```](./settings.md)中指定的默认的渲染器，解析器和身份认证类。
+
+默认情况只有```GET```方法会被允许。其他方法将会返回```"405 Method Not Allowed"```。如果要改变这种行为，需要指定视图允许哪些方法，比如下面这段代码：
+
+```python
+@api_view(['GET', 'POST'])
+def hello_world(request):
+    if request.method == 'POST':
+        return Response({"message": "Got some data!", "data": request.data})
+    return Response({"message": "Hello, world!"})
+```
+
 #### API策略 装饰器
 
+REST framework提供了其他的装饰器，用于给你的视图增加一些设置，用于覆盖默认的设置。
+
+这必须放置在```@api_view```装饰器的下面。
+
+比如，限制([限流](./throttling.md))的视图每天每个用户只可以访问一次，可以使用装饰器```@throttle_classes```，并把限制策略类以列表的形式传递给这个装饰器：
+
+```python
+from rest_framework.decorators import api_view, throttle_classes
+from rest_framework.throttling import UserRateThrottle
+
+class OncePerDayUserThrottle(UserRateThrottle):
+        rate = '1/day'
+
+@api_view(['GET'])
+@throttle_classes([OncePerDayUserThrottle])
+def view(request):
+    return Response({"message": "Hello for today! See you tomorrow!"})
+```
+
+这些装饰器对应```APIView```中设置的子类，他们功能是一样的。
+
+可用的装饰器如下：
+- ```@renderer_classes(...)```
+- ```@parser_classes(...)```
+- ```@authentication_classes(...)```
+- ```@throttle_classes(...)```
+- ```@permission_classes(...)```
+
+每个装饰器，至少接收一个类型为list或者tuple的参数，并且元素是一个类。
+
 #### 视图schema 装饰器
+
+如果要给基于函数的视图，覆盖默认的schema生成，你可以使用```@schema```装饰器，同样的，这个装饰器必须在```@api_view```装饰器的下面。 比如：
+
+```python
+from rest_framework.decorators import api_view, schema
+from rest_framework.schemas import AutoSchema
+
+class CustomAutoSchema(AutoSchema):
+    def get_link(self, path, method, base_url):
+        # override view introspection here...
+
+@api_view(['GET'])
+@schema(CustomAutoSchema())
+def view(request):
+    return Response({"message": "Hello for today! See you tomorrow!"})
+```
+
+这个装饰器的参数是一个```AutoSchema```的实例。具体参考文档[schemas](./schemas.md)。当然你也可以传递一个```None```，比如：
+
+```python
+@api_view(['GET'])
+@schema(None)
+def view(request):
+    return Response({"message": "Will not appear in schema!"})
+```
 
 ---
 
