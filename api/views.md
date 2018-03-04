@@ -2,7 +2,7 @@
 
 ### 基于类的视图
 
-> Django的基于类的视图和老式视图相比是更受欢迎的。
+> Django的基于类的视图和老式视图相比是更受欢迎的。  
 ——Reinout van Rees
 
 REST framework提供了一个```APIView```类，是Django的```View```类的子类。
