@@ -62,6 +62,11 @@ url(r'^/users/', ListCreateAPIView.as_view(queryset=User.objects.all(), serializ
 
 每个提供给用户使用的具体的命名通用视图，是使用内置的```GenericAPIView```和一个或者多个的```Mixins```类组合而成的。具体的下面有介绍。
 
+<br />
+<br />
+<br />
+<br />
+
 ##### 属性
 
 **基础设置**:
@@ -71,6 +76,9 @@ url(r'^/users/', ListCreateAPIView.as_view(queryset=User.objects.all(), serializ
 - ```serializer_class```: —— 这个属性设置的类，将用于验证用户的输入并反序列化，或者序列化输出结果。通常你需要设置这个属性，或者是重写```get_serializer_class()```方法。
 - ```lookup_field```: —— 这是一个模型字段，用来执行单个的模型实例的对象查看(意思是，外键查看)。默认是```'pk'```。注意，当使用超链接的API，你需要确保API视图和序列化类设置```lookup```字段，如果你需要使用一个自定义的值。
 - ```lookup_url_kwarg```: —— 被应用于对象查找URL关键字参数。URLconf中应包括相应于该值的关键字参数。如果未设置，那么默认使用和```lookup_field```相同的值。
+
+<br />
+<br />
 
 **分页设置**:
 
@@ -84,11 +92,19 @@ url(r'^/users/', ListCreateAPIView.as_view(queryset=User.objects.all(), serializ
 
 关于分页类的源码位置: ```rest_framework.pagination.*Pagination```
 
+<br />
+<br />
+
 **过滤设置**:
 
 - ```filter_backends```: —— 可以用来过滤Queryset的过滤类的一个列表。默认值是```settings```中的```DEFAULT_FILTER_BACKENDS```选项。
 
 注意： 在使用```Django REST Framework 3.7.7```版本的过程中，该过滤设置为```()```。
+
+<br />
+<br />
+<br />
+<br />
 
 ##### 方法
 
@@ -164,6 +180,9 @@ def get_serializer_class(self):
     return BasicAccountSerializer
 ```
 
+<br />
+<br />
+
 **保存 和 删除  钩子**：
 
 下面的这些方法是由```Mixins```类提供，并提供了简单的用于覆盖对象默认的 保存和删除 的行为。
@@ -199,7 +218,10 @@ def perform_create(self, serializer):
 
 注意： 这些方法取代了```2.x```版本中的```pre_save```, ```post_save```, ```pre_delete```和```post_delete```方法，它们将不再可用。
 
-***其他方法**: 
+<br />
+<br />
+
+**其他方法**: 
 
 你不需要重写以下方法，如果你使用```GenericAPIView```在编写自定义的视图，里面可能会用到它们。
 
@@ -440,7 +462,7 @@ class BaseRetrieveUpdateDestroyView(MultipleFieldLookupMixin, generics.RetrieveU
 
 #### Django REST Framework bulk
 
-这个[django-rest-framework-bulk package](https://github.com/miki725/django-rest-framework-bulk)实现了一些通用视图和Mixins类以及一些具体的命名通用视图来实现通过API 请求实现批量操作。
+这个[django-rest-framework-bulk package](https://github.com/miki725/django-rest-framework-bulk)实现了一些通用视图和Mixins类以及一些具体的命名通用视图来实现通过API 请求实现批量操作。
 
 #### Django Rest Multiple Models
 
