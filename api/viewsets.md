@@ -295,6 +295,8 @@ class AccountViewSet(viewsets.ModelViewSet):
 
 注意，当从```ViewSet```中删除```queryset```属性之后，与之关联的[```router```](./routers.md)将无法自动获取你Model的```base_name```， 所以你必须在注册路由的时候要自己指定```base_name```。
 
+提示： ```base_name```是根据```viewset```中的```queryset```属性来得到当前操作的模型的名称(小写)
+
 还要注意，尽管这个类默认提供了完整的create/list/retrieve/update/destroy操作集，但还可以通过使用标准权限类来限制可用操作。
 
 #### ReadOnlyModelViewSet 类
