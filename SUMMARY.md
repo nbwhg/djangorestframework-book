@@ -28,7 +28,7 @@
 * [视图Views](api/views.md)
 * [通用视图Generic views](api/gviews.md)
 * [视图组Viewsets](api/viewsets.md)
-* [路由Routers](api/routers.md)
+* [路由器Routers](api/routers.md)
 * [解析器Parsers](api/parsers.md)
 * [渲染器Renderers](api/renderers.md)
 * [序列化](api/serializers.md)
