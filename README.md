@@ -72,7 +72,7 @@ Django REST framework 是一个功能强大的灵活的构建Web APIs的工具�
   3. [视图Views](./api/views.md)
   4. [通用视图Generic views](./api/gviews.md)
   5. [视图组Viewsets](./api/viewsets.md)
-  6. [路由Routers](./api/routers.md)
+  6. [路由器Routers](./api/routers.md)
   7. [解析器Parsers](./api/parsers.md)
   8. [渲染器Renderers](./api/renderers.md)
   9. [序列化](./api/serializers.md)
