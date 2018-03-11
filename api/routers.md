@@ -182,6 +182,8 @@ class UserViewSet(ModelViewSet):
 
 关于```ViewSet```的文档，[点击这里查看](./viewsets.md)。
 
+---
+
 <br />
 <br />
 <br />
@@ -245,6 +247,11 @@ router = DefaultRouter(trailing_slash=False)
 ```
 
 ---
+
+<br />
+<br />
+<br />
+<br />
 
 ### 自定义路由
 
@@ -401,7 +408,7 @@ URL | HTTP 方法 | 动作 | URL 名称
 
 #### 更加高级自定义路由
 
-如果你想要提供一个完整的自定义的行为，你可以覆盖```BaseRouter```并且要重写```get_urls(self)```方法。这个方法应该检查注册的```viewset```并返回一个URL pattern列表。可以通过访问```self.registry```来检查注册的```prefix```(前缀), ```viewsets```(视图集) 和 ```basename```。
+如果你想要提供一个完整的自定义的行为，你可以继承```BaseRouter```类，并且要重写```get_urls(self)```方法。这个方法应该检查注册的```viewset```并返回一个URL pattern列表。可以通过访问```self.registry```来检查注册的```prefix```(前缀), ```viewsets```(视图集) 和 ```basename```。
 
 你可能想要覆盖```get_default_base_name(self, viewset)```方法，或者在向路由器注册的```ViewSet```中始终显式的设置```base_name```参数。
 
@@ -478,11 +485,10 @@ class SimpleRouter(BaseRouter):
         return ret
 ```
 
-<br />
-<br />
-
 ---
 
+<br />
+<br />
 <br />
 <br />
 
