@@ -75,7 +75,7 @@ Django REST framework 是一个功能强大的灵活的构建Web APIs的工具�
   6. [路由器Routers](./api/routers.md)
   7. [解析器Parsers](./api/parsers.md)
   8. [渲染器Renderers](./api/renderers.md)
-  9. [序列化](./api/serializers.md)
+  9. [序列化器Serializers](./api/serializers.md)
   10. [Serializer fields](./api/serializersfield.md)
   11. [Serializer relations](./api/serializersrelat.md)
   12. [校验器Validators](./api/validators.md)
@@ -96,3 +96,5 @@ Django REST framework 是一个功能强大的灵活的构建Web APIs的工具�
   27. [Settings](./api/settings.md)
 - 最佳实践
   1. [API文档生成](./topics/docs.md)
+  2. [HTML & Forms](../topics/forms.md)
+  3. [AJAX & CSRF & CORS](topics/cors.md)

@@ -31,7 +31,7 @@
 * [路由器Routers](api/routers.md)
 * [解析器Parsers](api/parsers.md)
 * [渲染器Renderers](api/renderers.md)
-* [序列化](api/serializers.md)
+* [序列化器Serializers](api/serializers.md)
 * [Serializer fields](api/serializersfield.md)
 * [Serializer relations](api/serializersrelat.md)
 * [校验器Validators](api/validators.md)
@@ -53,4 +53,6 @@
 
 ## 最佳实践
 * [API文档生成](topics/docs.md)
+* [HTML & Forms](topics/forms.md)
+* [AJAX & CSRF & CORS](topics/cors.md)
 
